@@ -25,8 +25,6 @@ function addEntry() {
 
 $SearchBtn.on('click', function(event){
     console.log(input.value);
-    }
-);
 
 //fetch request for current info
 fetch (`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=3165a95f6d12b7305ddd0dfd9f22e34f`)
@@ -38,7 +36,7 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=3
         var humidVal = data['main']['humidity'];
 
         cityName.innerHTML = (cityVal + ' ');
-        temp.innerHTML = (`Temperature: ${tempVal}°C`);
+        temp.innerHTML = (`Temperature: ${Math.floor((tempVal-273.15) * 1.8 + 32)}°F`);
         wind.innerHTML = (`Wind Speed : ${windVal} mph`);
         humidity.innerHTML = (`Humidity: ${humidVal}%`);
 
@@ -46,3 +44,6 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=3
         localStorage.setItem('saved', JSON.stringify(recentCities));
         addEntry();
     })
+
+}
+);
