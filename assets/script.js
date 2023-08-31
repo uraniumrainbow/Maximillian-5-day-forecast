@@ -16,7 +16,10 @@ var recentCities = $(JSON.parse(localStorage.getItem('saved')));
 function addEntry() {
     recentCities.sort();
     for(let i=0; i < recentCities.length; i++){
-
+        if(recentCities[i] === recentCities[i-1]){
+            recentCities.splice(i, 1);
+            i--;
+        }
     }
 };
 
@@ -25,7 +28,7 @@ $SearchBtn.on('click', function(event){
     }
 );
 
-//fetch request
+//fetch request for current info
 fetch (`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=3165a95f6d12b7305ddd0dfd9f22e34f`)
     .then(response => response.json())
     .then(data => {
@@ -37,5 +40,9 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=3
         cityName.innerHTML = (cityVal + ' ');
         temp.innerHTML = (`Temperature: ${tempVal}°C`);
         wind.innerHTML = (`Wind Speed : ${windVal} mph`);
-        humidity.innerHTML = (`Humidity: ${humidVal}`);
+        humidity.innerHTML = (`Humidity: ${humidVal}%`);
+
+        recentCities.push(cityVal);
+        localStorage.setItem('saved', JSON.stringify(recentCities));
+        addEntry();
     })
