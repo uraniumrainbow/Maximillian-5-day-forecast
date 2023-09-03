@@ -88,3 +88,28 @@ $SearchBtn.on('click', function(event){
         })
     }
     );
+
+    $('#BtnSpots').on('click', '#Relook' , function (event) { 
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+         console.log("Clicked");
+         var city = $(this).text();
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=ec96c3d6509b8a012ba07a86b8f2719b')
+        .then(response => response.json())
+        .then(data => {
+            var cityVal = data['name'];
+            var tempVal = data['main']['temp'];
+            var windVal = data['wind']['speed'];
+            var humidVal = data['main']['humidity'];
+
+            cityName.innerHTML = (cityVal + ' ');
+            temp.innerHTML = (`Temperature: ${Math.floor((tempVal-273.15) * 1.8 + 32)}°F`);
+            wind.innerHTML = (`Wind Speed : ${windVal} mph`);
+            humidity.innerHTML = (`Humidity: ${humidVal}%`);
+
+            recentCities.push(cityVal);
+            localStorage.setItem('saved', JSON.stringify(recentCities));
+            addEntry();
+        })
+    }
+    );
