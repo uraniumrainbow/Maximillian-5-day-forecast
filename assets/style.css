@@ -1,3 +1,93 @@
 body {
     background-color: hotpink;
 }
+
+button {
+    padding: 5px 15px;
+    background-color: rgb(237, 237, 243);
+    
+}
+button:hover{
+    background-color: rgb(202, 202, 207);
+}
+
+header {
+    color: #fab2f9;
+    size: 100px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: rgb(212, 209, 209) 1px 0 10px;
+    background: hotpink;
+    margin-bottom: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+aside {
+    margin-right: 20px;
+    color: #fab2f9;
+    padding: 20px;
+    clear: both;
+    float: left;
+    width: 20%;
+    height: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: var(--primary);
+}
+
+#topSide {
+    border-bottom: 3px solid whitesmoke;
+}
+
+.CityDet {
+    display: inline-block;
+    width: 75%;
+    border: inset var(--primary) 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.TextCont {
+    text-align: center;
+    color: white;
+}
+
+#cityName {
+    margin: 0;
+    padding-bottom: 10px; 
+    font-size: 35px;
+    background: hotpink;
+
+}
+
+
+.WeatherCards {
+    float: right;
+    display:inline-table;
+    margin-right: 27px;
+    width: 75%;
+    background-color: #8d0150;
+    border: inset var(--primary) 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.forecastCard{
+    color: black;
+    margin-top: 0px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    justify-content: space-between;
+    border: 8px solid;
+    border-image: linear-gradient(to bottom, pink, rgb(240,104,150)) 0 1;
+    margin-left: 10px;
+    width:18%;
+    float: left;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.ClearHistory{
+    margin-left: 10px;
+    float:left;
+}
+
